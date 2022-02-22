@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
+using System;
 using System.Threading.Tasks;
 
 namespace Blazored.TextEditor
@@ -16,37 +17,56 @@ namespace Blazored.TextEditor
             string[] formats,
             string debugLevel)
         {
-            return jsRuntime.InvokeAsync<object>(
-                "QuillFunctions.createQuill", 
-                quillElement, toolbar, readOnly, 
-                placeholder, theme, formats, debugLevel);
+            try
+            {
+                return jsRuntime.InvokeAsync<object>(
+                    "QuillFunctions.createQuill",
+                    quillElement, toolbar, readOnly,
+                    placeholder, theme, formats, debugLevel);
+            }
+            catch(Exception ex)
+                { throw new QuillTextEditorException("InteropException", ex); }
         }
 
         internal static ValueTask<string> GetText(
             IJSRuntime jsRuntime,
             ElementReference quillElement)
         {
-            return jsRuntime.InvokeAsync<string>(
-                "QuillFunctions.getQuillText", 
-                quillElement);
+            try
+            {
+                return jsRuntime.InvokeAsync<string>(
+                    "QuillFunctions.getQuillText",
+                    quillElement);
+            }
+            catch (Exception ex)
+                { throw new QuillTextEditorException("InteropException", ex); }
         }
 
         internal static ValueTask<string> GetHTML(
             IJSRuntime jsRuntime,
             ElementReference quillElement)
         {
+            try { 
             return jsRuntime.InvokeAsync<string>(
                 "QuillFunctions.getQuillHTML", 
                 quillElement);
+            }
+            catch (Exception ex)
+                { throw new QuillTextEditorException("InteropException", ex); }
         }
 
         internal static ValueTask<string> GetContent(
             IJSRuntime jsRuntime,
             ElementReference quillElement)
         {
-            return jsRuntime.InvokeAsync<string>(
-                "QuillFunctions.getQuillContent", 
-                quillElement);
+            try
+            {
+                return jsRuntime.InvokeAsync<string>(
+                    "QuillFunctions.getQuillContent",
+                    quillElement);
+            }
+            catch (Exception ex)
+                { throw new QuillTextEditorException("InteropException", ex); }
         }
 
         internal static ValueTask<object> LoadQuillContent(
@@ -54,9 +74,14 @@ namespace Blazored.TextEditor
             ElementReference quillElement,
             string Content)
         {
-            return jsRuntime.InvokeAsync<object>(
-                "QuillFunctions.loadQuillContent", 
-                quillElement, Content);
+            try
+            {
+                return jsRuntime.InvokeAsync<object>(
+                    "QuillFunctions.loadQuillContent",
+                    quillElement, Content);
+            }
+            catch (Exception ex)
+                { throw new QuillTextEditorException("InteropException", ex); }
         }
 
         internal static ValueTask<object> LoadQuillHTMLContent(
@@ -64,9 +89,14 @@ namespace Blazored.TextEditor
             ElementReference quillElement,
             string quillHTMLContent)
         {
-            return jsRuntime.InvokeAsync<object>(
-                "QuillFunctions.loadQuillHTMLContent",
-                quillElement, quillHTMLContent);
+            try
+            {
+                return jsRuntime.InvokeAsync<object>(
+                    "QuillFunctions.loadQuillHTMLContent",
+                    quillElement, quillHTMLContent);
+            }
+            catch (Exception ex)
+                { throw new QuillTextEditorException("InteropException", ex); }
         }
 
         internal static ValueTask<object> EnableQuillEditor(
@@ -74,9 +104,14 @@ namespace Blazored.TextEditor
             ElementReference quillElement,
             bool mode)
         {
-            return jsRuntime.InvokeAsync<object>(
-                "QuillFunctions.enableQuillEditor", 
-                quillElement, mode);
+            try
+            {
+                return jsRuntime.InvokeAsync<object>(
+                    "QuillFunctions.enableQuillEditor",
+                    quillElement, mode);
+            }
+            catch (Exception ex)
+                { throw new QuillTextEditorException("InteropException", ex); }
         }
 
         internal static ValueTask<object> InsertQuillImage(
@@ -84,9 +119,14 @@ namespace Blazored.TextEditor
             ElementReference quillElement,
             string imageURL)
         {
-            return jsRuntime.InvokeAsync<object>(
-                "QuillFunctions.insertQuillImage",
-                quillElement, imageURL);
+            try
+            {
+                return jsRuntime.InvokeAsync<object>(
+                    "QuillFunctions.insertQuillImage",
+                    quillElement, imageURL);
+            }
+            catch (Exception ex)
+                { throw new QuillTextEditorException("InteropException", ex); }
         }
 
         internal static ValueTask<object> InsertQuillText(
@@ -94,9 +134,14 @@ namespace Blazored.TextEditor
             ElementReference quillElement,
             string text)
         {
-            return jsRuntime.InvokeAsync<object>(
-                "QuillFunctions.insertQuillText",
-                quillElement, text);
+            try
+            {
+                return jsRuntime.InvokeAsync<object>(
+                    "QuillFunctions.insertQuillText",
+                    quillElement, text);
+            }
+            catch (Exception ex)
+                { throw new QuillTextEditorException("InteropException", ex); }
         }
     }
 }
