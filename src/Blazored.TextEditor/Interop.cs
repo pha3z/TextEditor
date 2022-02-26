@@ -25,7 +25,7 @@ namespace Blazored.TextEditor
                     placeholder, theme, formats, debugLevel);
             }
             catch(Exception ex)
-                { throw new QuillTextEditorException("InteropException", ex); }
+                { throw new BlazoredQuillException("InteropException", ex); }
         }
 
         internal static ValueTask<string> GetText(
@@ -39,7 +39,7 @@ namespace Blazored.TextEditor
                     quillElement);
             }
             catch (Exception ex)
-                { throw new QuillTextEditorException("InteropException", ex); }
+                { throw new BlazoredQuillGetContentException("GetContentException", ex); }
         }
 
         internal static ValueTask<string> GetHTML(
@@ -52,7 +52,7 @@ namespace Blazored.TextEditor
                 quillElement);
             }
             catch (Exception ex)
-                { throw new QuillTextEditorException("InteropException", ex); }
+                { throw new BlazoredQuillGetContentException("GetContentException", ex); }
         }
 
         internal static ValueTask<string> GetContent(
@@ -66,7 +66,7 @@ namespace Blazored.TextEditor
                     quillElement);
             }
             catch (Exception ex)
-                { throw new QuillTextEditorException("InteropException", ex); }
+                { throw new BlazoredQuillGetContentException("GetContentException", ex); }
         }
 
         internal static ValueTask<object> LoadQuillContent(
@@ -81,7 +81,7 @@ namespace Blazored.TextEditor
                     quillElement, Content);
             }
             catch (Exception ex)
-                { throw new QuillTextEditorException("InteropException", ex); }
+                { throw new BlazoredQuillException("InteropException", ex); }
         }
 
         internal static ValueTask<object> LoadQuillHTMLContent(
@@ -96,7 +96,7 @@ namespace Blazored.TextEditor
                     quillElement, quillHTMLContent);
             }
             catch (Exception ex)
-                { throw new QuillTextEditorException("InteropException", ex); }
+                { throw new BlazoredQuillException("InteropException", ex); }
         }
 
         internal static ValueTask<object> EnableQuillEditor(
@@ -111,7 +111,7 @@ namespace Blazored.TextEditor
                     quillElement, mode);
             }
             catch (Exception ex)
-                { throw new QuillTextEditorException("InteropException", ex); }
+                { throw new BlazoredQuillException("InteropException", ex); }
         }
 
         internal static ValueTask<object> InsertQuillImage(
@@ -126,7 +126,7 @@ namespace Blazored.TextEditor
                     quillElement, imageURL);
             }
             catch (Exception ex)
-                { throw new QuillTextEditorException("InteropException", ex); }
+                { throw new BlazoredQuillException("InteropException", ex); }
         }
 
         internal static ValueTask<object> InsertQuillText(
@@ -141,7 +141,7 @@ namespace Blazored.TextEditor
                     quillElement, text);
             }
             catch (Exception ex)
-                { throw new QuillTextEditorException("InteropException", ex); }
+                { throw new BlazoredQuillException("InteropException", ex); }
         }
     }
 }

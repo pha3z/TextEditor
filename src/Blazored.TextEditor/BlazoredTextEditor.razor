@@ -56,20 +56,34 @@
 
     public async Task<string> GetText()
     {
+        try{
         return await Interop.GetText(
             JSRuntime, QuillElement);
+        }
+        catch (Exception ex)
+            {  throw new BlazoredQuillGetContentException("GetContentException", ex); }
     }
 
     public async Task<string> GetHTML()
     {
+        try{
         return await Interop.GetHTML(
             JSRuntime, QuillElement);
+        }
+        catch (Exception ex)
+            {  throw new BlazoredQuillGetContentException("GetContentException", ex); }
+
     }
 
     public async Task<string> GetContent()
     {
+        try{
         return await Interop.GetContent(
             JSRuntime, QuillElement);
+        }
+        catch (Exception ex)
+            {  throw new BlazoredQuillGetContentException("GetContentException", ex); }
+
     }
 
     public async Task LoadContent(string Content)

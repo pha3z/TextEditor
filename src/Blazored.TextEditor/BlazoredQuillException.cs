@@ -4,14 +4,14 @@ using System.Text;
 
 namespace Blazored.TextEditor
 {
-    internal class QuillTextEditorException : Exception
+    internal class BlazoredQuillException : Exception
     {
-        public QuillTextEditorException(string message)
+        public BlazoredQuillException(string message)
     : base(message)
         {
         }
 
-        public QuillTextEditorException(string message, Exception inner)
+        public BlazoredQuillException(string message, Exception inner)
             : base(message, inner)
         {
         }
